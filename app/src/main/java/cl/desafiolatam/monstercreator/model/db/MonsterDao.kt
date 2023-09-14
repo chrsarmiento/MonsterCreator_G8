@@ -21,4 +21,6 @@ interface MonsterDao {
     fun deleteAllMonsters(vararg monster: Monster)
 
 
+
+
 }
