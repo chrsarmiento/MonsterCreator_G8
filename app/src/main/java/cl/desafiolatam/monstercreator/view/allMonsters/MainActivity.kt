@@ -1,5 +1,6 @@
 package cl.desafiolatam.monstercreator.view.allMonsters
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import cl.desafiolatam.monstercreator.app.MonsterCreatorApplication
 import cl.desafiolatam.monstercreator.model.MonsterAttributes
 import cl.desafiolatam.monstercreator.model.MonsterGenerator
 import cl.desafiolatam.monstercreator.model.MonsterRepository
+import cl.desafiolatam.monstercreator.view.monster.MonsterCreatorActivity
 import cl.desafiolatam.monstercreator.viewmodel.AllMonsterViewModel
 
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     private val adapter = AllMonstersAdapter(mutableListOf())
 
-    private val monsterRepository = MonsterRepository(MonsterCreatorApplication.database.monsterDao())
+    //private val monsterRepository = MonsterRepository(MonsterCreatorApplication.database.monsterDao())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +35,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            startActivity(Intent(this,MonsterCreatorActivity::class.java))
         }
 
         initRecyclerView()
@@ -51,13 +52,15 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        val temporaryMonsters = MonsterGenerator()
+        /*val temporaryMonsters = MonsterGenerator()
         monsterRepository.saveMonster(temporaryMonsters.generateMonster(MonsterAttributes(10,12,15),"Pepe",R.drawable.asset01))
         monsterRepository.saveMonster(temporaryMonsters.generateMonster(MonsterAttributes(11,10,11),"Pablito",R.drawable.asset06))
         monsterRepository.saveMonster(temporaryMonsters.generateMonster(MonsterAttributes(14,14,13),"Anita",R.drawable.asset03))
         monsterRepository.saveMonster(temporaryMonsters.generateMonster(MonsterAttributes(15,12,14),"Jose",R.drawable.asset04))
         monsterRepository.saveMonster(temporaryMonsters.generateMonster(MonsterAttributes(12,11,12),"Armando",R.drawable.asset05))
+    */
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

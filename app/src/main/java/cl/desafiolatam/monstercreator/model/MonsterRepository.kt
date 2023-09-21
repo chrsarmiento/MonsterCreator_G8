@@ -11,7 +11,7 @@ import cl.desafiolatam.monstercreator.model.db.MonsterDao
 
 // Declares the DAO as a private property in the constructor. Pass in the DAO
 // instead of the whole database, because you only need access to the DAO
-class MonsterRepository(monsterDao: MonsterDao) : MonsterRepositoryInterface {
+class MonsterRepository() : MonsterRepositoryInterface {
 
     private val monsterDao: MonsterDao = MonsterCreatorApplication.database.monsterDao()
 
